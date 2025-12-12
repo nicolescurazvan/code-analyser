@@ -1,0 +1,4 @@
+ADD example1 100
+ADD example2 100
+ADD example3 100
+RUN
