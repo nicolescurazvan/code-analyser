@@ -5,10 +5,12 @@ class UserError(Exception):
     pass
 
 
+# CLI interface
 def ProcessCLI():
     print("CLI mode activated")
 
 
+# Script processing
 def ProcessFile(file):
     try:
         f = open(file, "r")
@@ -18,6 +20,7 @@ def ProcessFile(file):
         print(f"There's no file named '{file}' here")
 
 
+# Main function
 def main():
     try:
         if len(sys.argv) == 1:
