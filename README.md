@@ -55,3 +55,13 @@ e.g. python3 for Python)
 the format of the representation of results.
 
 **Available Formats:**
+
+* `TABLE` (Table):
+> Options:
+>> * Style (from a file named `.config/style.json` or a custom path) which
+contains information about CLI colors, size, text alignment, etc.
+>> * Export (to a chosen text file as plain UTF-8 text).
+
+* `CSV` (Export to a CSV file or similar):
+> Options:
+>> Separator (by default, it's `,`) that can be any arbitrary string

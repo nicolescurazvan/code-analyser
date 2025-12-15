@@ -2,6 +2,8 @@ import subprocess
 from pathlib import Path
 from time import perf_counter_ns
 
+import errors
+
 
 # Measure running time
 def MeasureTime(program, args):
@@ -11,17 +13,16 @@ def MeasureTime(program, args):
         result = subprocess.run(command, capture_output=False)
         end = perf_counter_ns()
         return (end - beg) / 1e9
-    except subprocess.SubprocessError:
-        return "The program is wrong"
+    except subprocess.SubprocessError as e:
+        print(f"Error! ({program}  {' '.join(args)})\n{e}")
 
 
 # Execute a command
 def Execute(command):
     try:
         result = subprocess.run(command, capture_output=False)
-        return 1
     except subprocess.SubprocessError:
-        return 0
+        print(f"Error! ({' '.join(command)})\n{e}")
 
 
 # Size of a file
@@ -29,7 +30,7 @@ def FileSize(file):
     try:
         size = Path(file).stat().st_size
         return size
-    except FileNotFoundError:
-        return "File not found"
-    except PermissionError:
-        return "Permission denied"
+    except FileNotFoundError as e:
+        print(e)
+    except PermissionError as e:
+        print(e)

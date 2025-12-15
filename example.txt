@@ -1,4 +1,8 @@
-ADD example1 100
-ADD example2 100
-ADD example3 100
+EXECUTE ./build.sh
+TIME example1 1000
+TIME example2 1000
+TIME example1 10000
+TIME example2 10000
+TIME example1 100000
+TIME example2 100000
 RUN
