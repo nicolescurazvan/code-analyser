@@ -12,7 +12,7 @@ def MeasureTime(program, args):
         beg = perf_counter_ns()
         result = subprocess.run(command, capture_output=False)
         end = perf_counter_ns()
-        return (end - beg) / 1e9
+        return end - beg
     except subprocess.SubprocessError as e:
         print(f"Error! ({program}  {' '.join(args)})\n{e}")
 
@@ -20,13 +20,14 @@ def MeasureTime(program, args):
 # Execute a command
 def Execute(command):
     try:
-        result = subprocess.run(command, capture_output=False)
+        result = subprocess.run(command)
+        return result.stdout
     except subprocess.SubprocessError:
         print(f"Error! ({' '.join(command)})\n{e}")
 
 
 # Size of a file
-def FileSize(file):
+def FileSize(file: str) -> int:
     try:
         size = Path(file).stat().st_size
         return size

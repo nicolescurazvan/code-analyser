@@ -2,16 +2,31 @@ import sys
 
 import analytics
 import errors
-import instruction
+import parser
+
+# import stats
+
+results = dict()
 
 
 # CLI interface
 def ProcessCLI():
     print("CLI mode activated")
+    print(errors.SyntaxMessage)
+    print()
+
+    line = input()
+    while line != "EXIT":
+        obj = parser.ParseLine(line)
+        print(obj["label"])
+        if obj["command"] == "TIME":
+            res = analytics.MeasureTime(obj["command"], obj["args"])
+            results[obj["label"]] = res
+        line = input()
 
 
 # Script processing
-def ProcessFile(file):
+def ProcessFile(file: str):
     try:
         f = open(file, "r")
         print(f.read())

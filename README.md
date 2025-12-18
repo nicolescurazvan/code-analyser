@@ -5,13 +5,12 @@ A tool for analysing and benchmarking programs. It does the following tests:
 * Measure and compare how much time different programs take to run. It works
 by running the programs as subprocesses and counting the time.
 
-* Execute programs without analysing them.
-
 * Measure and compare the size of the files.
 
 The instructions are executed in a queue (first-in-first-out) structure. They
 can be read from keyboard (via CLI) or from a file, one per line. After execution,
-they are removed from the queue. The `RUN` command empties the queue.
+they are removed from the queue. The `PLOT`, `TABLE` and `CSV` commands empty 
+the queue.
 
 ---
 ## Program usage:
@@ -39,29 +38,25 @@ works flawlessly on all platforms with a Python interpreter.
 ## Syntax:
 
 * Measure the execution time of a program:
-`TIME <program> [args]`
+`label TIME <program> [args]`
 where `program` is the name of the executable and its arguments are `args`. 
 (for interpreted languages, the interpreting program must be explicitly given,
 e.g. python3 for Python)
 
-* Execute a command or a program:
-`EXECUTE <command>` to execute `command`
-
 * Measure the size of a file:
-`SIZE <file>` where file is the path to the file
+`label SIZE <file>` where file is the path to the file
 
-* Run the commands in the queue:
-`RUN [FORMAT options]`, where `options` are the options and `FORMAT` is 
-the format of the representation of results.
+* Plot the results:
+`PLOT [options]`
+The options are:
+1) `log` for logarithmic plot (by default it's linear)
+2) `[H]x[W]`, where `H` is the maximum height and `W` is the maximum weight
+(default: H = 40, W = 60
 
-**Available Formats:**
+* Put them in a table:
+`TABLE [options]`
+The options are:
+1) `[width]`, the width of the table (default: 60)
 
-* `TABLE` (Table):
-> Options:
->> * Style (from a file named `.config/style.json` or a custom path) which
-contains information about CLI colors, size, text alignment, etc.
->> * Export (to a chosen text file as plain UTF-8 text).
-
-* `CSV` (Export to a CSV file or similar):
-> Options:
->> Separator (by default, it's `,`) that can be any arbitrary string
+* Exit the shell:
+`EXIT` (not necessary in a script)
