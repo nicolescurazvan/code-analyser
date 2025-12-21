@@ -9,8 +9,7 @@ by running the programs as subprocesses and counting the time.
 
 The instructions are executed in a queue (first-in-first-out) structure. They
 can be read from keyboard (via CLI) or from a file, one per line. After execution,
-they are removed from the queue. The `PLOT`, `TABLE` and `CSV` commands empty 
-the queue.
+they are removed from the queue.
 
 ---
 ## Program usage:
@@ -33,30 +32,3 @@ essential for developing high-quality software or APIs
 Why Python? Because it's a simple, yet versatile programming language that
 makes combining different technologies simpler than languages like C/C++ and
 works flawlessly on all platforms with a Python interpreter.
-
----
-## Syntax:
-
-* Measure the execution time of a program:
-`label TIME <program> [args]`
-where `program` is the name of the executable and its arguments are `args`. 
-(for interpreted languages, the interpreting program must be explicitly given,
-e.g. python3 for Python)
-
-* Measure the size of a file:
-`label SIZE <file>` where file is the path to the file
-
-* Plot the results:
-`PLOT [options]`
-The options are:
-1) `log` for logarithmic plot (by default it's linear)
-2) `[H]x[W]`, where `H` is the maximum height and `W` is the maximum weight
-(default: H = 40, W = 60
-
-* Put them in a table:
-`TABLE [options]`
-The options are:
-1) `[width]`, the width of the table (default: 60)
-
-* Exit the shell:
-`EXIT` (not necessary in a script)

@@ -22,6 +22,7 @@ def MeasureTime(program: str, args: list[str]) -> str:
             return f"{t / 1e9:.2f}s"
     except subprocess.SubprocessError as e:
         print(f"Error! ({program}  {' '.join(args)})\n{e}")
+        return ""
 
 
 # Size of a file
